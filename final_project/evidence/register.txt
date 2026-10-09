@@ -1,0 +1,4 @@
+﻿## Register demo user (Task 6)
+> curl.exe -sS -X POST http://127.0.0.1:5000/register -H 'Content-Type: application/json' -d '{"username":"curl-demo-197cb3be3d","password":"[redacted]"}'
+HTTP 201
+{"message":"User registered successfully.","username":"curl-demo-197cb3be3d"}

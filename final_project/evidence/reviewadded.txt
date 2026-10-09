@@ -1,0 +1,12 @@
+﻿## Add review with JWT (Task 8)
+> curl.exe -sS -X PUT 'http://127.0.0.1:5000/customer/auth/review/1?review=A%20locally%20captured%20review.' -H 'Authorization: Bearer [redacted]'
+HTTP 201
+{"message":"Review added.","isbn":"1","username":"curl-demo-197cb3be3d","review":"A locally captured review."}
+## Confirm review visible (Task 8)
+> curl.exe -sS http://127.0.0.1:5000/review/1
+HTTP 200
+{"curl-demo-197cb3be3d":"A locally captured review."}
+## Modify own review (Task 8)
+> curl.exe -sS -X PATCH http://127.0.0.1:5000/customer/auth/review/1 -H 'Authorization: Bearer [redacted]' -H 'Content-Type: application/json' -d '{"review":"[updated review text]"}'
+HTTP 200
+{"message":"Review updated.","isbn":"1","username":"curl-demo-197cb3be3d","review":"Updated by the same local user."}

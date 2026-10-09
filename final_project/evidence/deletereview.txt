@@ -1,0 +1,8 @@
+﻿## Delete own review (Task 9)
+> curl.exe -sS -X DELETE http://127.0.0.1:5000/customer/auth/review/1 -H 'Authorization: Bearer [redacted]'
+HTTP 200
+{"message":"Review deleted.","isbn":"1","username":"curl-demo-197cb3be3d"}
+## Confirm review deletion
+> curl.exe -sS http://127.0.0.1:5000/review/1
+HTTP 200
+{}

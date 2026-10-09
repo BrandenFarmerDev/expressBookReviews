@@ -1,0 +1,4 @@
+﻿## Login and receive JWT (Task 7)
+> curl.exe -sS -X POST http://127.0.0.1:5000/customer/login -H 'Content-Type: application/json' -d '{"username":"curl-demo-197cb3be3d","password":"[redacted]"}'
+HTTP 200
+{"message":"User successfully logged in.","username":"curl-demo-197cb3be3d","token":"[redacted]"}

@@ -1,0 +1,7 @@
+Task 10 — public general.js URL
+
+PENDING PUBLICATION. No repository has been published. After an explicitly authorized publication step, record the public URL for:
+final_project/router/general.js
+
+Local implementation: ../router/general.js
+It contains Axios async/Promise retrievals for the complete book list, ISBN, author, and title.

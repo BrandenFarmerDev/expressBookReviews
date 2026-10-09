@@ -1,0 +1,4 @@
+﻿## Find by author (Task 3)
+> curl.exe -sS http://127.0.0.1:5000/author/Jane%20Austen
+HTTP 200
+{"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}}}

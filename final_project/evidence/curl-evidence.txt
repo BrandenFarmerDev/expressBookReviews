@@ -1,0 +1,75 @@
+﻿Local cURL evidence captured 2026-10-09 15:49:42 -07:00 against http://127.0.0.1:5000. JWTs and demo passwords redacted.
+## List all books (Task 1)
+> curl.exe -sS http://127.0.0.1:5000/
+HTTP 200
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}},"2":{"author":"Hans Christian Andersen","title":"Fairy tales","reviews":{}},"3":{"author":"Dante Alighieri","title":"The Divine Comedy","reviews":{}},"4":{"author":"Unknown","title":"The Epic Of Gilgamesh","reviews":{}},"5":{"author":"Unknown","title":"The Book Of Job","reviews":{}},"6":{"author":"Unknown","title":"One Thousand and One Nights","reviews":{}},"7":{"author":"Unknown","title":"Njál's Saga","reviews":{}},"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}},"9":{"author":"Honoré de Balzac","title":"Le Père Goriot","reviews":{}},"10":{"author":"Samuel Beckett","title":"Molloy, Malone Dies, The Unnamable, the trilogy","reviews":{}}}
+
+## Find by ISBN (Task 2)
+> curl.exe -sS http://127.0.0.1:5000/isbn/1
+HTTP 200
+{"isbn":"1","author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}
+
+## Find by author (Task 3)
+> curl.exe -sS http://127.0.0.1:5000/author/Jane%20Austen
+HTTP 200
+{"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}}}
+
+## Find by title (Task 4)
+> curl.exe -sS http://127.0.0.1:5000/title/Pride%20and%20Prejudice
+HTTP 200
+{"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}}}
+
+## Read reviews (Task 5)
+> curl.exe -sS http://127.0.0.1:5000/review/1
+HTTP 200
+{}
+
+## Register demo user (Task 6)
+> curl.exe -sS -X POST http://127.0.0.1:5000/register -H 'Content-Type: application/json' -d '{"username":"curl-demo-197cb3be3d","password":"[redacted]"}'
+HTTP 201
+{"message":"User registered successfully.","username":"curl-demo-197cb3be3d"}
+
+## Login and receive JWT (Task 7)
+> curl.exe -sS -X POST http://127.0.0.1:5000/customer/login -H 'Content-Type: application/json' -d '{"username":"curl-demo-197cb3be3d","password":"[redacted]"}'
+HTTP 200
+{"message":"User successfully logged in.","username":"curl-demo-197cb3be3d","token":"[redacted]"}
+
+## Register second demo user
+> curl.exe -sS -X POST http://127.0.0.1:5000/register -H 'Content-Type: application/json' -d '{"username":"curl-demo-2eaf7e23de","password":"[redacted]"}'
+HTTP 201
+{"message":"User registered successfully.","username":"curl-demo-2eaf7e23de"}
+
+## Login second demo user
+> curl.exe -sS -X POST http://127.0.0.1:5000/customer/login -H 'Content-Type: application/json' -d '{"username":"curl-demo-2eaf7e23de","password":"[redacted]"}'
+HTTP 200
+{"message":"User successfully logged in.","username":"curl-demo-2eaf7e23de","token":"[redacted]"}
+
+## Add review with JWT (Task 8)
+> curl.exe -sS -X PUT 'http://127.0.0.1:5000/customer/auth/review/1?review=A%20locally%20captured%20review.' -H 'Authorization: Bearer [redacted]'
+HTTP 201
+{"message":"Review added.","isbn":"1","username":"curl-demo-197cb3be3d","review":"A locally captured review."}
+
+## Confirm review visible (Task 8)
+> curl.exe -sS http://127.0.0.1:5000/review/1
+HTTP 200
+{"curl-demo-197cb3be3d":"A locally captured review."}
+
+## Modify own review (Task 8)
+> curl.exe -sS -X PATCH http://127.0.0.1:5000/customer/auth/review/1 -H 'Authorization: Bearer [redacted]' -H 'Content-Type: application/json' -d '{"review":"[updated review text]"}'
+HTTP 200
+{"message":"Review updated.","isbn":"1","username":"curl-demo-197cb3be3d","review":"Updated by the same local user."}
+
+## Reject another user modifying the review
+> curl.exe -sS -X PATCH http://127.0.0.1:5000/customer/auth/review/1 -H 'Authorization: Bearer [redacted]'
+HTTP 404
+{"error":"Your review was not found."}
+
+## Delete own review (Task 9)
+> curl.exe -sS -X DELETE http://127.0.0.1:5000/customer/auth/review/1 -H 'Authorization: Bearer [redacted]'
+HTTP 200
+{"message":"Review deleted.","isbn":"1","username":"curl-demo-197cb3be3d"}
+
+## Confirm review deletion
+> curl.exe -sS http://127.0.0.1:5000/review/1
+HTTP 200
+{}

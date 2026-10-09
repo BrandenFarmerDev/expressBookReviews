@@ -1,0 +1,8 @@
+Task 11 — fork-parent proof
+
+PENDING PUBLICATION. No GitHub fork has been created and no external request was made.
+
+After an explicitly authorized fork/publication step, run and save the output of:
+curl -s https://api.github.com/repos/<your-github-username>/expressBookReviews | jq '.parent.full_name'
+
+Expected output: "ibm-developer-skills-network/expressBookReviews"
