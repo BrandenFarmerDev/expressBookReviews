@@ -1,8 +1,15 @@
-Task 11 — fork-parent proof
+Task 11 — public fork-parent proof
 
-PENDING PUBLICATION. No GitHub fork has been created and no external request was made.
+Repository API: https://api.github.com/repos/BrandenFarmerDev/expressBookReviews
+Public repository: https://github.com/BrandenFarmerDev/expressBookReviews
+Official source parent: ibm-developer-skills-network/expressBookReviews
+Verified branch: ibm-express-book-reviews-final-project
+Verified branch commit: 6ef184a8b9a69d802942d60f74d2e770d43a39ef
 
-After an explicitly authorized fork/publication step, run and save the output of:
-curl -s https://api.github.com/repos/<your-github-username>/expressBookReviews | jq '.parent.full_name'
+Reproducible command:
+curl.exe -sS https://api.github.com/repos/BrandenFarmerDev/expressBookReviews | jq ".parent.full_name"
 
-Expected output: "ibm-developer-skills-network/expressBookReviews"
+Observed output:
+"ibm-developer-skills-network/expressBookReviews"
+
+The public GitHub repository API reports full_name BrandenFarmerDev/expressBookReviews and parent.full_name ibm-developer-skills-network/expressBookReviews. The exact-commit public general.js content was fetched and matched against the local file.

@@ -1,7 +1,10 @@
 Task 10 — public general.js URL
 
-PENDING PUBLICATION. No repository has been published. After an explicitly authorized publication step, record the public URL for:
-final_project/router/general.js
+Repository: https://github.com/BrandenFarmerDev/expressBookReviews
+Branch: ibm-express-book-reviews-final-project
+Commit: 6ef184a8b9a69d802942d60f74d2e770d43a39ef
+Stable exact-commit permalink: https://github.com/BrandenFarmerDev/expressBookReviews/blob/6ef184a8b9a69d802942d60f74d2e770d43a39ef/final_project/router/general.js
+Branch URL: https://github.com/BrandenFarmerDev/expressBookReviews/blob/ibm-express-book-reviews-final-project/final_project/router/general.js
+Raw exact-commit URL: https://raw.githubusercontent.com/BrandenFarmerDev/expressBookReviews/6ef184a8b9a69d802942d60f74d2e770d43a39ef/final_project/router/general.js
 
-Local implementation: ../router/general.js
-It contains Axios async/Promise retrievals for the complete book list, ISBN, author, and title.
+Verified by fetching the raw exact-commit URL and comparing its full content with the local final_project/router/general.js; contents match (3,621 characters).
